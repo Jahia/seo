@@ -44,8 +44,7 @@
 package org.jahia.modules.seo.rules;
 
 import org.drools.core.spi.KnowledgeHelper;
-import org.jahia.services.content.JCRContentUtils;
-import org.jahia.services.content.JCRNodeWrapper;
+import org.jahia.services.content.*;
 import org.jahia.services.content.rules.AddedNodeFact;
 import org.jahia.services.seo.VanityUrl;
 import org.jahia.services.seo.jcr.VanityUrlService;
@@ -109,10 +108,16 @@ public class SeoService {
             throws RepositoryException {
         logger.debug("Removing URL mappings for locale {} from node {}", locale, node.getPath());
         urlService.removeVanityUrlMappings(node.getNode(), locale);
+
     }
 
     public void checkVanityUrl(final AddedNodeFact newSeo, KnowledgeHelper drools) {
-        JCRNodeWrapper node = newSeo.getNode();
+        JCRNodeWrapper node;
+        try {
+            node = newSeo.getNode().getSession().getNode(newSeo.getPath());
+        } catch (RepositoryException e) {
+            node = newSeo.getNode();
+        }
         logger.debug("VANITY CHECK: start vanity check for node: " + node.getPath());
         try {
             String url = node.getProperty("j:url").getString();

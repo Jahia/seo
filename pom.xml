@@ -71,7 +71,7 @@
         <jahia-depends />
         <export-package>org.jahia.modules.seo.rules</export-package>
         <require-capability>osgi.extender;filter:="(osgi.extender=org.jahia.bundles.blueprint.extender.config)"</require-capability>
-        <jahia-module-signature>MCwCFFP1bpVkOfypFtclRfjDpIj0BTzeAhQFlsubPxqtyTY2SHPnyj/msRL3nw==</jahia-module-signature>
+        <jahia-module-signature>MCwCFDDs8jCvlTQV56qUboILQqjBzw//AhQKs/pWJKpuxZiGBdLyfxpu8CyTWQ==</jahia-module-signature>
         <jahia.plugin.version>6.9</jahia.plugin.version>
     </properties>
 
